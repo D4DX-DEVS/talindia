@@ -12,18 +12,18 @@
   "services": [
     { "binding": "WORKER_SELF_REFERENCE", "service": "talindia" }
   ],
-  // Replace database_id with the id printed by `wrangler d1 create talindia-db` before deploying.
+  // DB and NEXT_TAG_CACHE_D1 share one database (created with `wrangler d1 create talindia-db`).
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "talindia-db",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "35068769-3e27-4b8f-a7f0-773f113836b7",
       "migrations_dir": "drizzle/migrations"
     },
     {
       "binding": "NEXT_TAG_CACHE_D1",
       "database_name": "talindia-db",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "35068769-3e27-4b8f-a7f0-773f113836b7",
       "migrations_dir": "drizzle/migrations"
     }
   ],

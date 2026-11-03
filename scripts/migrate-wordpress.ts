@@ -416,9 +416,12 @@ function writeInventory(): void {
 
 // ---------------------------------------------------------------- apply
 
+// On Windows the shell is needed to resolve npx.cmd, and it joins args unquoted: quote any with spaces.
+const shellArg = (a: string): string => (process.platform === "win32" && /\s/.test(a) ? `"${a}"` : a);
+
 function run(cmd: string, args: string[]): Promise<void> {
   return new Promise((resolve, reject) => {
-    const child = spawn(cmd, args, { cwd: ROOT, stdio: ["ignore", "pipe", "pipe"], shell: process.platform === "win32" });
+    const child = spawn(cmd, args.map(shellArg), { cwd: ROOT, stdio: ["ignore", "pipe", "pipe"], shell: process.platform === "win32" });
     let err = "";
     child.stderr.on("data", (d) => (err += d));
     child.on("close", (code) => (code === 0 ? resolve() : reject(new Error(`${cmd} ${args.join(" ")} -> ${code}\n${err}`))));
