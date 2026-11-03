@@ -1,0 +1,42 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "talindia",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": { "enabled": true },
+  "services": [
+    { "binding": "WORKER_SELF_REFERENCE", "service": "talindia" }
+  ],
+  // Replace database_id with the id printed by `wrangler d1 create talindia-db` before deploying.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "talindia-db",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "drizzle/migrations"
+    },
+    {
+      "binding": "NEXT_TAG_CACHE_D1",
+      "database_name": "talindia-db",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "drizzle/migrations"
+    }
+  ],
+  "r2_buckets": [
+    { "binding": "MEDIA", "bucket_name": "talindia-media" },
+    { "binding": "NEXT_INC_CACHE_R2_BUCKET", "bucket_name": "talindia-next-cache" }
+  ],
+  "durable_objects": {
+    "bindings": [{ "name": "NEXT_CACHE_DO_QUEUE", "class_name": "DOQueueHandler" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["DOQueueHandler"] }],
+  "images": { "binding": "IMAGES" },
+  "vars": {
+    "SITE_URL": "https://talindia.co"
+  }
+}

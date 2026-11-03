@@ -1,26 +1,302 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Talindia brand roles (taken from the existing logo and site). */
+  --color-ground: var(--ground);
+  --color-ink: var(--ink);
+  --color-soft: var(--soft);
+  --color-paper: var(--paper);
+  --color-field: var(--field);
+  --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
+  --color-indigo: var(--indigo);
+  --color-indigo-deep: var(--indigo-deep);
+  --color-violet: var(--violet);
+  --color-violet-pale: var(--violet-pale);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-soft: var(--on-dark-soft);
+
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --ground: #f5f5f9;
+  --paper: #ffffff;
+  --field: #e9e9f2;
+  --ink: #0d0d16;
+  --soft: #4b4c66;
+  --night: #0b0b12;
+  --night-soft: #17172a;
+  --indigo: #3c3e99;
+  --indigo-deep: #24256b;
+  --violet: #5b03ff;
+  --violet-pale: #b994ff;
+  --on-dark: #f5f5f9;
+  --on-dark-soft: #b9bad0;
+
+  --background: var(--ground);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--violet);
+  --primary-foreground: #ffffff;
+  --secondary: var(--field);
+  --secondary-foreground: var(--ink);
+  --muted: var(--field);
+  --muted-foreground: var(--soft);
+  --accent: #ececf6;
+  --accent-foreground: var(--ink);
+  --destructive: #c4233a;
+  --border: #dcdce8;
+  --input: #cfd0df;
+  --ring: var(--violet);
+  --chart-1: var(--indigo);
+  --chart-2: var(--violet);
+  --chart-3: #8f90b8;
+  --radius: 0.375rem;
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--indigo);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--field);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--violet);
+
+  --ease-out-strong: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "lnum" 1;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 3px solid var(--violet);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: var(--violet);
+    color: #fff;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* One page frame for the public site: equal 16/24/32px margins. */
+  .frame {
+    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8;
+  }
+  .display {
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+  .prose-site p {
+    @apply mb-5 text-lg leading-relaxed text-ink;
+  }
+  .prose-site h2 {
+    @apply mt-10 mb-4 text-2xl font-bold tracking-tight;
+  }
+  .prose-site h3 {
+    @apply mt-8 mb-3 text-xl font-bold;
+  }
+  .prose-site ul {
+    @apply mb-5 list-disc space-y-2 pl-6 text-lg;
+  }
+  .prose-site ol {
+    @apply mb-5 list-decimal space-y-2 pl-6 text-lg;
+  }
+  .prose-site a {
+    @apply font-semibold text-indigo underline underline-offset-4 hover:text-violet;
+  }
+}
+
+/* ---------------------------------------------------------------- motion
+ * Pure CSS so content is never hidden when scripts fail. Entrances use scroll-driven
+ * animations where supported; elsewhere elements simply appear.
+ */
+@layer utilities {
+  .line-mask {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.06em;
+  }
+  .line-mask > span {
+    display: block;
+    animation: line-rise 0.9s var(--ease-out-strong) both;
+  }
+  .line-mask:nth-child(2) > span {
+    animation-delay: 0.11s;
+  }
+  .fade-up-late {
+    animation: fade-up 0.7s var(--ease-out-strong) 0.45s both;
+  }
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 38%;
+    }
+    .reveal-2 {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 6% entry 46%;
+    }
+    .reveal-3 {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 12% entry 54%;
+    }
+    .drift {
+      animation: drift linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+  @keyframes line-rise {
+    from { transform: translateY(105%); }
+    to { transform: translateY(0); }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes drift {
+    from { transform: scale(1.12) translateY(-3%); }
+    to { transform: scale(1.02) translateY(3%); }
+  }
+  /* Scripted intros (src/components/motion) hide their section until GSAP is ready; if it never loads,
+   * the failsafe shows it anyway. Only applies once the inline script has marked <html class="js">. */
+  @media (prefers-reduced-motion: no-preference) {
+    .js [data-reveal-hide] {
+      visibility: hidden;
+      animation: reveal-failsafe 0s 2.5s forwards;
+    }
+  }
+  @keyframes reveal-failsafe {
+    to { visibility: visible; }
+  }
+
+  /* Cursor-following glow for cards; the section's motion script feeds --mx/--my. */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgb(91 3 255 / 0.38), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.35s;
+    pointer-events: none;
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+  /* The custom cursor (src/components/motion/custom-cursor.tsx) replaces the native one, except in text fields. */
+  .has-cursor,
+  .has-cursor * {
+    cursor: none !important;
+  }
+  .has-cursor :is(input, textarea, select, [contenteditable="true"]) {
+    cursor: text !important;
+  }
+
+  /* Inner-page breadcrumb: each crumb slides in after the one before it. */
+  .crumbs-in > li {
+    animation: fade-left 0.6s var(--ease-out-strong) both;
+  }
+  .crumbs-in > li:nth-child(2) { animation-delay: 0.08s; }
+  .crumbs-in > li:nth-child(3) { animation-delay: 0.16s; }
+  .crumbs-in > li:nth-child(n + 4) { animation-delay: 0.24s; }
+  @keyframes fade-left {
+    from { opacity: 0; transform: translateX(-14px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .line-mask > span, .fade-up-late, .reveal, .reveal-2, .reveal-3, .drift, .crumbs-in > li {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
 }

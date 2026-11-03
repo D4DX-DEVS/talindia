@@ -1,0 +1,289 @@
+[
+ {
+  "type": "pages",
+  "id": 1702,
+  "url": "/home-talindia/",
+  "title": "Home-Talindia",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1522,
+  "url": "/my-account/",
+  "title": "My account",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1521,
+  "url": "/checkout-3/",
+  "title": "Checkout",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1520,
+  "url": "/cart-3/",
+  "title": "Cart",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1519,
+  "url": "/shop/",
+  "title": "Shop",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1464,
+  "url": "/checkout-2/",
+  "title": "Checkout",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1463,
+  "url": "/cart-2/",
+  "title": "Cart",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1462,
+  "url": "/checkout/",
+  "title": "Checkout",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1461,
+  "url": "/cart/",
+  "title": "Cart",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1460,
+  "url": "/instructor-registration/",
+  "title": "Instructor Registration",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1459,
+  "url": "/student-registration/",
+  "title": "Student Registration",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1458,
+  "url": "/dashboard/",
+  "title": "Dashboard",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 2,
+  "url": "/sample-page/",
+  "title": "Sample Page",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1242,
+  "url": "/contact/",
+  "title": "Contact",
+  "decision": "migrated -> /contact/ (Contact Form 7 form rebuilt, submissions stored in D1)"
+ },
+ {
+  "type": "pages",
+  "id": 1228,
+  "url": "/blog-grid/",
+  "title": "Blog Grid",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1215,
+  "url": "/courses-grid/",
+  "title": "Courses Grid",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1210,
+  "url": "/courses-list/",
+  "title": "Courses List",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1190,
+  "url": "/team/",
+  "title": "Team",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1160,
+  "url": "/about-us/",
+  "title": "About Us",
+  "decision": "migrated -> /about-us/"
+ },
+ {
+  "type": "pages",
+  "id": 1099,
+  "url": "/terms-conditions/",
+  "title": "Terms Conditions",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1081,
+  "url": "/privacy-policy-2/",
+  "title": "Privacy Policy",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 866,
+  "url": "/",
+  "title": "Home 3",
+  "decision": "migrated -> / (front page \"Home 3\")"
+ },
+ {
+  "type": "pages",
+  "id": 611,
+  "url": "/home-2/",
+  "title": "Home 2",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1346,
+  "url": "/blog/",
+  "title": "Blog",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "pages",
+  "id": 1345,
+  "url": "/home/",
+  "title": "Home",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "posts",
+  "id": 1,
+  "url": "/hello-world/",
+  "title": "Hello world!",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "posts",
+  "id": 604,
+  "url": "/co-education-makes-you-respect-the-people/",
+  "title": "Co-Education Makes You Respect The People",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "posts",
+  "id": 601,
+  "url": "/professional-ceramic-maudling-for-beginners/",
+  "title": "Professional Ceramic Maudling for Beginners",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "posts",
+  "id": 599,
+  "url": "/education-is-about-create-leaders-for-tomorrow/",
+  "title": "Education Is About Create Leaders For Tomorrow",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "posts",
+  "id": 597,
+  "url": "/education-makes-a-door-to-bright-future/",
+  "title": "Education Makes A Door To Bright Future",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "posts",
+  "id": 595,
+  "url": "/education-is-a-best-friend-goes-lifelong/",
+  "title": "Education Is A Best Friend Goes Lifelong",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "posts",
+  "id": 593,
+  "url": "/professional-mobile-painting-and-sculpting/",
+  "title": "Professional Mobile Painting and Sculpting",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "posts",
+  "id": 591,
+  "url": "/you-have-to-learn-if-you-want-to-earn/",
+  "title": "You Have To Learn If You Want To Earn",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "posts",
+  "id": 589,
+  "url": "/education-is-the-most-powerful-tool/",
+  "title": "Education Is The Most Powerful Tool",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "posts",
+  "id": 587,
+  "url": "/essential-tips-for-building-a-responsive-web-design/",
+  "title": "Essential Tips for Building a Responsive Web Design",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "courses",
+  "id": 1530,
+  "url": "/courses/modern-teaching-excellence-for-gcc-educators/",
+  "title": "Modern Teaching Excellence for GCC Educators",
+  "decision": "migrated -> same URL"
+ },
+ {
+  "type": "courses",
+  "id": 1465,
+  "url": "/courses/sap-advanced-excel-for-finance-professionals/",
+  "title": "SAP & Advanced Excel for Finance Professionals",
+  "decision": "migrated -> same URL"
+ },
+ {
+  "type": "courses",
+  "id": 1532,
+  "url": "/courses/digital-sales-marketing-masterynew-course/",
+  "title": "Digital Sales & Marketing MasteryNew Course",
+  "decision": "migrated -> /courses/digital-sales-marketing-mastery/ (301)"
+ },
+ {
+  "type": "service",
+  "id": 1386,
+  "url": "/all-service/individual-skill-development/",
+  "title": "Individual Skill Development",
+  "decision": "migrated -> same URL"
+ },
+ {
+  "type": "project",
+  "id": 1110,
+  "url": "/all-project/full-stack-web-development-bootcamp/",
+  "title": "Full Stack Web Development Bootcamp",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ },
+ {
+  "type": "team",
+  "id": 1034,
+  "url": "/all-team/tim-r-moyer/",
+  "title": "Tim R. Moyer",
+  "decision": "not migrated: theme demo / placeholder / WooCommerce stub -> 301 (see src/lib/redirects.ts)"
+ }
+]

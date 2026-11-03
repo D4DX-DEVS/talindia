@@ -1,0 +1,1 @@
+ALTER TABLE `services` ADD `image_id` integer REFERENCES media(id) ON DELETE set null;

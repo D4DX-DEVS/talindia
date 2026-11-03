@@ -1,0 +1,14 @@
+import { chromium } from "@playwright/test";
+import fs from "node:fs";
+const env = Object.fromEntries(fs.readFileSync(".env.e2e.local", "utf8").trim().split("\n").map((l) => l.split(/=(.*)/s).slice(0, 2)));
+const b = await chromium.launch(); const p = await b.newPage();
+await p.goto("http://localhost:4343/admin/courses/"); await p.waitForURL(/login/); console.log("redirected to", p.url());
+await p.fill("#email", env.E2E_ADMIN_EMAIL); await p.fill("#password", "wrong-password"); await p.click("button[type=submit]");
+await p.getByText("Incorrect email or password.").waitFor(); console.log("bad login rejected");
+await p.fill("#email", env.E2E_ADMIN_EMAIL); await p.fill("#password", env.E2E_ADMIN_PASSWORD); await p.click("button[type=submit]");
+await p.waitForURL("http://localhost:4343/admin/"); await p.getByText("Published trainings").waitFor(); console.log("dashboard ok");
+await p.goto("http://localhost:4343/admin/courses/"); await p.getByRole("link", { name: "SAP & Advanced Excel" }).first().waitFor(); console.log("courses list ok");
+await p.screenshot({ path: ".playwright-mcp/admin-courses.jpeg", type: "jpeg", quality: 70 });
+await p.getByRole("link", { name: /SAP & Advanced Excel/ }).first().click(); await p.waitForTimeout(3000); await p.screenshot({ path: ".playwright-mcp/admin-course-edit.jpeg", type: "jpeg", quality: 70, fullPage: true }); await p.getByLabel("Title", { exact: true }).waitFor();
+await p.screenshot({ path: ".playwright-mcp/admin-course-edit.jpeg", type: "jpeg", quality: 70, fullPage: true });
+console.log("edit ok"); await b.close();
