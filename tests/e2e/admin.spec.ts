@@ -22,7 +22,11 @@ test.describe("admin authorization", () => {
       await page.goto(path);
       await expect(page).toHaveURL(/\/admin\/login\/$/);
       const html = await (await request.get(path)).text();
-      expect(html).not.toMatch(/Published trainings|info@talindia\.co|SAP &amp; Advanced Excel/);
+      // Only rendered for a signed-in admin. (The public footer, contact email included, is in every
+      // page's payload via the root not-found boundary, so it is not a sign of a leak.)
+      for (const marker of ["Published trainings", "Sign out", "SAP &amp; Advanced Excel", adminCreds().email]) {
+        expect(html).not.toContain(marker);
+      }
     });
   }
 
@@ -61,6 +65,8 @@ test.describe("admin login", () => {
       await page.getByLabel("Email").fill(`nobody${i}@example.com`);
       await page.getByLabel("Password").fill("wrong");
       await page.getByRole("button", { name: "Sign in" }).click();
+      // The form resets once the action settles; filling before that would be wiped.
+      await expect(page.getByLabel("Email")).toHaveValue("");
       await expect(page.getByRole("alert").filter({ hasText: /Incorrect|Too many/ })).toBeVisible();
     }
     await expect(page.getByText(/Too many attempts/)).toBeVisible();
@@ -84,8 +90,8 @@ test.describe("training CRUD", () => {
     const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
     await login(page);
     await page.goto("/admin/courses/new/");
-    await page.getByLabel("Title", { exact: true }).fill(title);
-    await page.getByLabel("Title", { exact: true }).blur();
+    await page.getByLabel("Title *", { exact: true }).fill(title);
+    await page.getByLabel("Title *", { exact: true }).blur();
     await expect(page.getByLabel("URL slug")).toHaveValue(slug);
     await page.getByLabel("Who it is for").fill("Automated test audience");
     await page.getByRole("button", { name: "Create training" }).click();
@@ -120,7 +126,7 @@ test.describe("training CRUD", () => {
   test("rejects an invalid slug with an inline error", async ({ page }) => {
     await login(page);
     await page.goto("/admin/courses/new/");
-    await page.getByLabel("Title", { exact: true }).fill("Bad slug test");
+    await page.getByLabel("Title *", { exact: true }).fill("Bad slug test");
     await page.getByLabel("URL slug").fill("Not A Slug!");
     await page.getByLabel("Who it is for").fill("Anyone");
     await page.getByRole("button", { name: "Create training" }).click();

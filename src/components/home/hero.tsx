@@ -28,7 +28,8 @@ export function Hero({ hero, portrait = null }: HeroProps) {
       <div aria-hidden data-m="disc" className="absolute -right-[38vw] -bottom-[62vw] -z-10 size-[150vw] rounded-full bg-violet sm:-right-[30vw] sm:-bottom-[40vw] sm:size-[110vw] lg:top-1/2 lg:-right-[24vh] lg:bottom-auto lg:size-[118vh] lg:-translate-y-[42%]" />
       <div className="frame relative grid min-h-[calc(100svh-4rem)] items-center gap-10 pt-14 pb-0 sm:min-h-[calc(100svh-4.5rem)] lg:grid-cols-12 lg:pt-0">
         <div className="relative z-10 lg:col-span-7 lg:pb-16">
-          <h1 id="hero-title" className="text-[13.5vw] leading-[0.95] font-extrabold tracking-[-0.04em] text-white sm:text-[9vw] lg:text-[clamp(64px,6.6vw,118px)]">
+          {/* The lines are split into per-letter spans for motion; the heading carries the readable name. */}
+          <h1 id="hero-title" aria-label={second ? `${first} ${second}` : first} className="text-[13.5vw] leading-[0.95] font-extrabold tracking-[-0.04em] text-white sm:text-[9vw] lg:text-[clamp(64px,6.6vw,118px)]">
             <span data-m="line" className="block">{first}</span>
             {second && <span data-m="line" className="block text-violet-pale">{second}</span>}
           </h1>

@@ -17,7 +17,8 @@ const hero: Setup = (root) => {
 
   tl.from(disc, { scale: 0.35, rotate: -45, autoAlpha: 0, duration: 1.8 }, 0);
   q("[data-m=line]").forEach((line, i) => {
-    const split = SplitText.create(line, { type: "words,chars", mask: "words" });
+    // aria-label is not allowed on a <span>: hide the split line and let the <h1> carry the name.
+    const split = SplitText.create(line, { type: "words,chars", mask: "words", aria: "hidden" });
     tl.from(split.chars, { yPercent: 115, rotate: 10, duration: 1.1, stagger: 0.024 }, 0.15 + i * 0.2);
   });
   tl.from(portrait, { y: 120, autoAlpha: 0, duration: 1.6 }, 0.25);
@@ -51,7 +52,8 @@ const about: Setup = (root) => {
   gsap.from(panel, { scale: 0.92, y: 80, borderRadius: "7rem", ease: "none", scrollTrigger: { trigger: panel, start: "top bottom", end: "top 30%", scrub: 1 } });
 
   const split = SplitText.create(heading, { type: "words" });
-  gsap.from(split.words, { opacity: 0.12, stagger: 0.1, ease: "none", scrollTrigger: { trigger: heading, start: "top 85%", end: "bottom 40%", scrub: true } });
+  // 0.5 keeps the unread words at 3.5:1 on the light panel (WCAG large-text minimum is 3:1).
+  gsap.from(split.words, { opacity: 0.5, stagger: 0.1, ease: "none", scrollTrigger: { trigger: heading, start: "top 85%", end: "bottom 40%", scrub: true } });
 
   gsap.from(q("[data-m=fade]"), { y: 30, autoAlpha: 0, duration: 1, ease: "power3.out", stagger: 0.12, scrollTrigger: { trigger: heading, start: "bottom 80%" } });
 

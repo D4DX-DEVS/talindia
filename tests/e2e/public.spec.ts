@@ -49,6 +49,8 @@ test.describe("public pages", () => {
 
   test("home trainings list links to each course", async ({ page }) => {
     await page.goto("/");
+    // Training cards stay hidden until scrolled into view (scroll-triggered motion).
+    await page.locator('a[href*="/courses/modern-teaching-excellence"]').first().scrollIntoViewIfNeeded();
     await page.getByRole("link", { name: /Modern Teaching Excellence/ }).first().click();
     await expect(page).toHaveURL(/\/courses\//);
     await expect(page.getByText("GCC curriculum standards and teaching methodologies").first()).toBeVisible();

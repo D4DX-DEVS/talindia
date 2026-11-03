@@ -43,16 +43,17 @@ test.describe("contact form", () => {
     const ctx = await browser.newContext({ extraHTTPHeaders: { "cf-connecting-ip": uniqueIp() } });
     const page = await ctx.newPage();
     await page.goto("/contact/");
+    const name = page.getByLabel("Name *");
+    const tooMany = page.getByText(/Too many messages/);
     let blocked = false;
     for (let i = 0; i < 6 && !blocked; i++) {
-      await page.getByLabel("Name *").fill(`E2E flood ${i}`);
+      await name.fill(`E2E flood ${i}`);
       await page.getByLabel("Email *").fill("flood@example.com");
       await page.getByLabel("Your message *").fill("Rate limit check message, safe to delete.");
       await page.getByRole("button", { name: "Send message" }).click();
-      const toast = page.locator("[data-sonner-toast]").last();
-      await expect(toast).toBeVisible();
-      blocked = /Too many messages/.test((await toast.textContent()) ?? "");
-      await page.waitForTimeout(300);
+      // Each submission settles as either a reset form (accepted) or the rate-limit toast.
+      await expect.poll(async () => (await tooMany.count()) > 0 || (await name.inputValue()) === "").toBe(true);
+      blocked = (await tooMany.count()) > 0;
     }
     expect(blocked).toBe(true);
     await ctx.close();
@@ -64,7 +65,10 @@ test.describe("newsletter", () => {
     const ctx = await browser.newContext({ extraHTTPHeaders: { "cf-connecting-ip": uniqueIp() } });
     const page = await ctx.newPage();
     await page.goto("/about-us/");
-    await page.getByLabel("Get course launch updates").fill(`e2e+${Date.now()}@example.com`);
+    const email = page.getByLabel("Get course launch updates");
+    // Footer columns stay hidden until scrolled into view (scroll-triggered motion).
+    await email.scrollIntoViewIfNeeded();
+    await email.fill(`e2e+${Date.now()}@example.com`);
     await page.getByRole("button", { name: "Subscribe" }).click();
     await expect(page.getByText(/You're subscribed/)).toBeVisible();
     await ctx.close();
